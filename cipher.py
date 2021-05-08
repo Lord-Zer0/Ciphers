@@ -74,6 +74,13 @@ def decrypt(ciphertext, key):
 
 def rot13(text):
     return encrypt(text, 13)
+
+def bruteforce(ciphertext):
+    guesses = []
+    for i in range (0, 25):
+        guesses.append(decrypt(ciphertext, i))
+
+    return guesses
     
 
 # rotate a string about n by using the split operand
@@ -84,6 +91,8 @@ def rotate(seq, n):
 decrypt(encrypt(TEST_STR, TEST_KEY), TEST_KEY)
 encrypt("I love you", 17)
 encrypt("")
+
+print(bruteforce(TEST_CIP))
 
 #print(encrypt(TEST_STR, TEST_KEY))
 #print(decrypt(TEST_CIP, TEST_KEY))
