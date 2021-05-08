@@ -1,6 +1,7 @@
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 TEST_STR = "Sphinx of black quartz, judge my vow."
-TEST_CIP = "YXLQPBSHFNGGQSYGXXBLYFIGQAXSY"
+TEST_CIP = "URJKPZQHDNCEMSWCTVBLWFIGOAXQY"
+EMPTY_STRING_MSG = "string does not contain any recognized letters!"
 TEST_KEY = 2
 
 def encrypt(plaintext, key = 0):
@@ -13,8 +14,8 @@ def encrypt(plaintext, key = 0):
             plaintext = plaintext.replace(p, '')
 
     if len(plaintext) < 1:
-        print("string does not contain any recognized letters!")
-        return "string does not contain any recognized letters!"
+        print(EMPTY_STRING_MSG)
+        return EMPTY_STRING_MSG
     
     print(plaintext)
     # string is now trimmed, apply key and modify
