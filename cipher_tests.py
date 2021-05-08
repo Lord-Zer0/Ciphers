@@ -50,10 +50,10 @@ class CaesarCipherTest(unittest.TestCase):
         self.assertEqual(cipher.encrypt("*{;|&$@#138953#*(", 25), cipher.EMPTY_STRING_MSG)
         self.assertEqual(cipher.decrypt("?.>-83{67@3\!;`2=", 26), cipher.EMPTY_STRING_MSG)
     def test_digits_in_string(self):
-        self.assertEqual(cipher.encrypt"the password is 1234", 15), "iwtephhldgsxh".upper())
+        self.assertEqual(cipher.encrypt("the password is 1234", 15), "iwtephhldgsxh".upper())
         self.assertEqual(cipher.encrypt("1234567890", 12), cipher.EMPTY_STRING_MSG)
         self.assertEqual(cipher.encrypt("testif000digits23in1string", 15), "cnbcromrprcbrwbcarwp".upper())
 
 
-if name == '__main__':
+if __name__ == '__main__':
     unittest.main()
