@@ -1,5 +1,3 @@
-# Plaintext
-
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 TEST_STR = "Sphinx of black quartz, judge my vow."
 TEST_CIP = "YXLQPBSHFNGGQSYGXXBLYFIGQAXSY"
@@ -15,6 +13,7 @@ def encrypt(plaintext, key = 0):
             plaintext = plaintext.replace(p, '')
 
     if len(plaintext) < 1:
+        print("string does not contain any recognized letters!")
         return "string does not contain any recognized letters!"
     
     print(plaintext)
@@ -28,18 +27,19 @@ def encrypt(plaintext, key = 0):
     cipher = rotate(ALPHABET, key)
     #print(cipher)
     
-    # find the position of a letter in the alphabet, then replace it with the corresponding cipher
+   
     text = list(plaintext)
 
-    for i in range(0,len(text)):
+    # find the position of a letter in the alphabet, then replace it with the corresponding cipher
+    for i in range(0, len(text)):
         loc = ALPHABET.find(text[i])
-        print(ALPHABET[loc] + ' > ' + cipher[loc])
+        #print(ALPHABET[loc] + ' > ' + cipher[loc])
         text[i] = cipher[loc]
-        print(text)
+        #print(text)
 
     plaintext = "".join(text)
     print(plaintext)
-    #return plaintext
+    return plaintext
 
 
 def decrypt(ciphertext, key):
@@ -47,15 +47,18 @@ def decrypt(ciphertext, key):
 
     cipher = rotate(ALPHABET, key)
     #print(cipher)
+    text = list(ciphertext)
 
-    for c in ciphertext:
-        loc = cipher.find(c)
-        print(ALPHABET[loc])
-        ciphertext = ciphertext.replace(c, ALPHABET[loc])
     # find the position of a letter in the cipher and replace with alphabet letter
-
+    for i in range(0, len(text)):
+        loc = cipher.find(text[i])
+        #print(ALPHABET[loc] + ' < ' + cipher[loc])
+        text[i] = ALPHABET[loc]
+        #print(text)
+    
+    ciphertext = "".join(text)
     print(ciphertext)
-    #return ciphertext
+    return ciphertext
 
 
 def rot13(text):
@@ -67,6 +70,9 @@ def rotate(seq, n):
     return seq[n:] + seq[:n]
 
 
-encrypt(TEST_STR, TEST_KEY)
+decrypt(encrypt(TEST_STR, TEST_KEY), TEST_KEY)
+encrypt("I love you", 17)
+encrypt("")
+
 #print(encrypt(TEST_STR, TEST_KEY))
 #print(decrypt(TEST_CIP, TEST_KEY))
