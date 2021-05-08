@@ -8,7 +8,7 @@ class CaesarCipherTest(unittest.TestCase):
     def test_encode_default(self):
         self.assertEqual(cipher.encrypt(cipher.TEST_STR, cipher.TEST_KEY), cipher.TEST_CIP)
     def test_decode_default(self):
-        self.assertEqual(cipher.decrypt(cipher.TEST_CIP, cipher.TEST_KEY), cipher.TEST_STR)
+        self.assertEqual(cipher.decrypt(cipher.TEST_CIP, cipher.TEST_KEY), cipher.TEST_TXT)
     def test_encode_decode_default(self):
         self.assertEqual(cipher.decrypt(cipher.encrypt("test_encode_decode_default  ", 8)), "TESTENCODEDECODEDEFAULT")
         self.assertEqual(cipher.decrypt(cipher.encrypt("test_encode_decode_default  ", 25)), "TESTENCODEDECODEDEFAULT")
@@ -52,7 +52,7 @@ class CaesarCipherTest(unittest.TestCase):
     def test_digits_in_string(self):
         self.assertEqual(cipher.encrypt("the password is 1234", 15), "iwtephhldgsxh".upper())
         self.assertEqual(cipher.encrypt("1234567890", 12), cipher.EMPTY_STRING_MSG)
-        self.assertEqual(cipher.encrypt("testif000digits23in1string", 15), "cnbcromrprcbrwbcarwp".upper())
+        self.assertEqual(cipher.encrypt("testif000digits23in1string", 15), "ithixusxvxihxchigxcv".upper())
 
 
 if __name__ == '__main__':

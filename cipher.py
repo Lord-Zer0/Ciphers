@@ -1,6 +1,7 @@
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 TEST_STR = "Sphinx of black quartz, judge my vow."
 TEST_CIP = "URJKPZQHDNCEMSWCTVBLWFIGOAXQY"
+TEST_TXT = "SPHINXOFBLACKQUARTZJUDGEMYVOW"
 EMPTY_STRING_MSG = "string does not contain any recognized letters!"
 TEST_KEY = 2
 
@@ -45,6 +46,15 @@ def encrypt(plaintext, key = 0):
 
 def decrypt(ciphertext, key):
     key = (key + 26) % 26
+
+    for c in ciphertext:
+        if c not in ALPHABET:
+            #print(p)
+            plaintext = plaintext.replace(c, '')
+
+    if len(ciphertext) < 1:
+        print(EMPTY_STRING_MSG)
+        return EMPTY_STRING_MSG
 
     cipher = rotate(ALPHABET, key)
     #print(cipher)
